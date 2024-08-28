@@ -1,3 +1,5 @@
 .vs/
 \\Controllers\\WeatherForecastController.cs
 WeatherForecastController.cs
+WeatherForecast.cs
+
