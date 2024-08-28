@@ -1,0 +1,32 @@
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\appsettings.json
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Online Store Managment.exe
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Online Store Managment.deps.json
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Online Store Managment.runtimeconfig.json
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Online Store Managment.dll
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Online Store Managment.pdb
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\DELL\source\repos\Online Store Managment\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.AssemblyInfo.cs
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets\msbuild.Online Store Managment.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets\msbuild.build.Online Store Managment.props
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Online Store Managment.props
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Online Store Managment.props
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\scopedcss\bundle\Online Store Managment.styles.css
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online S.2400C247.Up2Date
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.dll
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\refint\Online Store Managment.dll
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.pdb
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\Online Store Managment.genruntimeconfig.cache
+C:\Users\DELL\source\repos\Online Store Managment\obj\Debug\net8.0\ref\Online Store Managment.dll
