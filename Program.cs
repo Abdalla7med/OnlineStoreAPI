@@ -1,4 +1,6 @@
 
+using Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 namespace Online_Store_Management
@@ -7,10 +9,12 @@ namespace Online_Store_Management
     {
         public static void Main(string[] args)
         {
+            
             var builder = WebApplication.CreateBuilder(args);
 
+           
+          
             // Add services to the container.
-
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -24,6 +28,11 @@ namespace Online_Store_Management
                         Description = "A simple ASP.NET Core Web API",
                     });
                 });
+
+            /// Adding connection string 
+            builder.Services.AddDbContext<OnlineStoreContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             var app = builder.Build();
 

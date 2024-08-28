@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "Pxn85JKaeOzEhSL6mn7Ei+95ixnZRuqQHl/yLPu4wI0=",
-  "Source": "Online Store Managment",
-  "BasePath": "_content/Online Store Managment",
+  "Hash": "sy3J8jyceFxJz8s4tE8dBEVGMeGjkhclecsL4PikcKQ=",
+  "Source": "OnlineStoreAPI",
+  "BasePath": "_content/OnlineStoreAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
