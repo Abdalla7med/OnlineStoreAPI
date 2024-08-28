@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
+/*using Microsoft.AspNetCore.Mvc;
 
-namespace Online_Store_Managment.Controllers
+namespace ontrollers
 {
     [ApiController]
     [Route("[controller]")]
@@ -31,3 +31,4 @@ namespace Online_Store_Managment.Controllers
         }
     }
 }
+*/
