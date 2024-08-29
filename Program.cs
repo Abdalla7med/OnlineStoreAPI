@@ -3,6 +3,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace OnlineStoreAPI
 {
@@ -13,10 +14,18 @@ namespace OnlineStoreAPI
             
             var builder = WebApplication.CreateBuilder(args);
 
+      
+
+            /// this's the solution for the problem JsonCycle  in Order.OrderDetails.Order
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; // Adjust depth as needed
+                });
            
-          
-            // Add services to the container.
-            builder.Services.AddControllers();
+
+            // Add services to the container. builder.Services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(

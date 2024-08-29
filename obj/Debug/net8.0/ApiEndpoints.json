@@ -1,5 +1,84 @@
 [
   {
+    "ContainingType": "OnlineStoreAPI.Controllers.CustomerController",
+    "Method": "GetCustomers",
+    "RelativePath": "api/Customer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineStoreAPI.Controllers.CustomerController",
+    "Method": "CreateCustomers",
+    "RelativePath": "api/Customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CustomerDto",
+        "Type": "OnlineStoreAPI.Models.CustomerCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineStoreAPI.Controllers.CustomerController",
+    "Method": "Updateustomer",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "customerDto",
+        "Type": "OnlineStoreAPI.Models.CustomerUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineStoreAPI.Controllers.CustomerController",
+    "Method": "GetProductById",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineStoreAPI.Controllers.CustomerController",
+    "Method": "DeleteCustomer",
+    "RelativePath": "api/Customer/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "OnlineStoreAPI.Controllers.OrderController",
     "Method": "GetOrders",
     "RelativePath": "api/Order",
@@ -57,6 +136,22 @@
       {
         "Name": "OrderDto",
         "Type": "OnlineStoreAPI.OrderUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OnlineStoreAPI.Controllers.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
