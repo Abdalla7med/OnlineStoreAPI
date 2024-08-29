@@ -12,9 +12,11 @@ namespace OnlineStoreAPI.Controllers
     {
 
         OnlineStoreContext _context;
-        public OrderController(OnlineStoreContext context)
+        ILogger<OrderController> logger;
+        public OrderController(OnlineStoreContext context, ILogger<OrderController> logger)
         {
             _context = context;
+            logger = logger;
         }
 
         [HttpGet]
@@ -28,44 +30,85 @@ namespace OnlineStoreAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] OrderCreateDTO orderDto)
         {
-            
             // Check if the incoming order data is valid
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                // Create the Order entity
-                var order = new Order
-                {
-                    OrderDate = DateTime.UtcNow,
-                    Status = orderDto.Status,
-                    CustomerId = orderDto.CustomerId
-                };
-
-                order.OrderDetails = new List<OrderDetail>();
-
-                // Add the OrderDetails to the order
-                foreach (var detailDto in orderDto.OrderDetails)
-                {
-                    var orderDetail = new OrderDetail
-                    {
-                        ProductId = detailDto.ProductId,
-                        Quantity = detailDto.Quantity,
-                        PriceAtPurchase = detailDto.PriceAtPurchase
-                    };
-
-                    order.OrderDetails.Add(orderDetail);
-                }
-
-                // Add the order to the database
-                _context.Orders.Add(order);
-                await _context.SaveChangesAsync();
-
-
-                // Return a response with the created order to ensure that the order is placed in the database correctly 
-                return CreatedAtAction(nameof(GetOrderById), new { id = order.Id }, order);
+                return BadRequest(ModelState);
             }
 
-            // If the model is invalid, return a bad request response with validation errors
-            return BadRequest(ModelState);
+            var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == orderDto.CustomerId);
+
+            // Ensure that the customer who places the order exists
+            if (customer == null)
+            {
+                return NotFound("Customer not found.");
+            }
+
+            // Initialize a list to collect any errors related to stock availability
+            var stockErrors = new List<string>();
+
+            // Create the Order entity
+            var order = new Order
+            {
+                OrderDate = DateTime.UtcNow,
+                Status = orderDto.Status,
+                CustomerId = orderDto.CustomerId,
+                Customer = customer
+            };
+
+            order.OrderDetails = new List<OrderDetail>();
+
+            // Check if all products in the order have sufficient stock
+            foreach (var detailDto in orderDto.OrderDetails)
+            {
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == detailDto.ProductId);
+
+                if (product == null)
+                {
+                    stockErrors.Add($"Product with ID {detailDto.ProductId} not found.");
+                    continue;
+                }
+
+                if (detailDto.Quantity > product.QuantityInStock)
+                {
+
+                    stockErrors.Add($"Insufficient stock for Product ID {detailDto.ProductId}. Available: {product.QuantityInStock}, Requested: {detailDto.Quantity}");
+                    continue;
+                }
+
+                // If stock is sufficient, add to the order details
+                var orderDetail = new OrderDetail
+                {
+                    ProductId = detailDto.ProductId,
+                    Quantity = detailDto.Quantity,
+                    PriceAtPurchase = product.Price * detailDto.Quantity
+                };
+                order.OrderDetails.Add(orderDetail);
+            }
+
+            // Return errors if any stock issues were found
+            if (stockErrors.Any())
+            {
+                return BadRequest(string.Join("; ", stockErrors));
+            }
+
+            // Update stock quantities for valid order details
+            foreach (var orderDetail in order.OrderDetails)
+            {
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == orderDetail.ProductId);
+                if (product != null)
+                {
+                    product.QuantityInStock -= orderDetail.Quantity;
+                    _context.Update(product);
+                }
+            }
+
+            // Add the order to the database
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            // Return a response with the created order
+            return CreatedAtAction(nameof(GetOrderById), new { id = order.Id }, order);
         }
 
         [HttpGet("{id}")]
