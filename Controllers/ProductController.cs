@@ -32,6 +32,10 @@ namespace OnlineStoreAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] ProductCreateDto productDto)
         {
+
+            if (_context.Products.Any(p => p.Name == productDto.Name))
+                return BadRequest("Product already Exists Try to Update it ");
+
             if (ModelState.IsValid)
             {
                 var product = new Product
@@ -74,7 +78,7 @@ namespace OnlineStoreAPI.Controllers
 
                 if (product == null)
                 {
-                    return NotFound();
+                    return NotFound("Product Not found Try to Add it ");
                 }
 
                 product.Price = productDto.Price;
@@ -95,7 +99,7 @@ namespace OnlineStoreAPI.Controllers
 
             if (product == null)
             {
-                return NotFound();
+                return NotFound("Product not Found");
             }
 
             _context.Products.Remove(product);

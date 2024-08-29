@@ -1,10 +1,17 @@
-﻿namespace OnlineStoreAPI
+﻿using Models;
+
+namespace OnlineStoreAPI
 {
-    public class OrderDTO
+    public class OrderCreateDTO
     {
-        public string Status { get; set; }
+        public OrderStatus Status { get; set; }
         public int? CustomerId { get; set; } // Optional Foreign Key
         public List<OrderDetailDTO> OrderDetails { get; set; } // List of Order Details
 
+    }
+
+    public class OrderUpdateDTO
+    {
+        public OrderStatus Status { get; set; }
     }
 }

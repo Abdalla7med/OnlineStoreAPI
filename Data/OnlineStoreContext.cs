@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.SqlServer;
 using Models;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection.Emit;
 
 namespace Data
@@ -18,6 +19,27 @@ namespace Data
         {
             
         }
+
+        /// <summary>
+        ///  Adding some Logic before saving changes on database 
+        /// </summary>
+        /// <returns></returns>
+        public override int SaveChanges()
+        {
+            var Entities = from e in ChangeTracker.Entries()
+                           where e.State == EntityState.Modified ||
+                           e.State == EntityState.Added 
+                           select e.Entity;
+
+            foreach (var Entity in Entities)
+            {
+                ValidationContext validationContext = new ValidationContext(Entity);
+                Validator.ValidateObject(Entity, validationContext, true);
+            }
+
+            return base.SaveChanges();  
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

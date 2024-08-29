@@ -2,7 +2,7 @@
 
 namespace OnlineStoreAPI.Models
 {
-    public class CustomerDTO
+    public class CustomerCreateDTO
     {
         [Required, EmailAddress]
         public string Email { get; set; }
@@ -11,4 +11,15 @@ namespace OnlineStoreAPI.Models
         [Phone]
         public string PhoneNumber { get; set; }
     }
+
+    public class CustomerUpdateDTO
+    {
+        [Required, EmailAddress]
+
+        public string Email { get; set; }
+
+        [Phone]
+        public string PhoneNumber { get; set; }
+    }
+
 }
