@@ -20,6 +20,6 @@
         public Customer Customer { get; set; }
 
         /// Navigational Property for Many To Many Relation
-        public ICollection<OrderProduct> OrderProducts { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

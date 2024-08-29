@@ -45,22 +45,6 @@ namespace Online_Store_Managment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "john.doe@example.com",
-                            Name = "John Doe",
-                            PhoneNumber = "555-1234"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "jane.smith@example.com",
-                            Name = "Jane Smith",
-                            PhoneNumber = "555-5678"
-                        });
                 });
 
             modelBuilder.Entity("Models.Order", b =>
@@ -87,31 +71,18 @@ namespace Online_Store_Managment.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CustomerId = 1,
-                            OrderDate = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CustomerId = 2,
-                            OrderDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = 2
-                        });
                 });
 
-            modelBuilder.Entity("Models.OrderProduct", b =>
+            modelBuilder.Entity("Models.OrderDetail", b =>
                 {
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("PriceAtPurchase")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -120,27 +91,7 @@ namespace Online_Store_Managment.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderProducts");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 1,
-                            Quantity = 2
-                        },
-                        new
-                        {
-                            OrderId = 1,
-                            ProductId = 2,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            OrderId = 2,
-                            ProductId = 2,
-                            Quantity = 3
-                        });
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Models.Product", b =>
@@ -164,22 +115,6 @@ namespace Online_Store_Managment.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Product A",
-                            Price = 29.99m,
-                            QuantityInStock = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Product B",
-                            Price = 49.99m,
-                            QuantityInStock = 0
-                        });
                 });
 
             modelBuilder.Entity("Models.Order", b =>
@@ -193,16 +128,16 @@ namespace Online_Store_Managment.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Models.OrderProduct", b =>
+            modelBuilder.Entity("Models.OrderDetail", b =>
                 {
                     b.HasOne("Models.Order", "Order")
-                        .WithMany("OrderProducts")
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Models.Product", "Product")
-                        .WithMany("OrderProducts")
+                        .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -219,12 +154,12 @@ namespace Online_Store_Managment.Migrations
 
             modelBuilder.Entity("Models.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("Models.Product", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

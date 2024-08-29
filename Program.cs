@@ -2,8 +2,9 @@
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.ComponentModel;
 
-namespace Online_Store_Management
+namespace OnlineStoreAPI
 {
     public class Program
     {
@@ -24,8 +25,8 @@ namespace Online_Store_Management
                     c.SwaggerDoc("v1", new OpenApiInfo
                     {
                         Version = "v1",
-                        Title = "My API",
-                        Description = "A simple ASP.NET Core Web API",
+                        Title = "OnlineStoreAPI",
+                        Description = "A Online Store ASP.net API",
                     });
                 });
 
@@ -42,10 +43,10 @@ namespace Online_Store_Management
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "OnlineStoreAPI v1");
                 });
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

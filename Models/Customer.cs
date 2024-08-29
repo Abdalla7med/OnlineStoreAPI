@@ -13,6 +13,6 @@ namespace Models
         public string PhoneNumber { get; set; }
 
         // Navigation property
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order>? Orders { get; set; }
     }
 }
